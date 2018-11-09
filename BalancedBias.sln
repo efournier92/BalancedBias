@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NewsFeed", "http://localhost:58853", "{35388F5C-69E3-4454-963C-E7A970998A28}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58853"
+		Debug.AspNetCompiler.PhysicalPath = "Web\NewsFeed\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58853\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58853"
+		Release.AspNetCompiler.PhysicalPath = "Web\NewsFeed\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58853\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Web\NewsFeed\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Media", "http://localhost:63314", "{A1B62CD0-3536-40C6-AC70-74C4B077439C}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_63314"
+		Debug.AspNetCompiler.PhysicalPath = "Web\Media\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63314\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_63314"
+		Release.AspNetCompiler.PhysicalPath = "Web\Media\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63314\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Web\Media\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35388F5C-69E3-4454-963C-E7A970998A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35388F5C-69E3-4454-963C-E7A970998A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B62CD0-3536-40C6-AC70-74C4B077439C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B62CD0-3536-40C6-AC70-74C4B077439C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
