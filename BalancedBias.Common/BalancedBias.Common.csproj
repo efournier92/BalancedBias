@@ -4,7 +4,7 @@
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>4b8f194c-55f8-4d1a-a418-784c4bd0a8ea</ProjectGuid>
+		<ProjectGuid>00cd231a-0d96-4c1d-b57f-e9980037e380</ProjectGuid>
 		<OutputType>Library</OutputType>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>BalancedBias.Common</RootNamespace>
