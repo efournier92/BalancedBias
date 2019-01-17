@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BalancedBias.Common.Config
 {
-    interface IAppConfigReader
+    public interface IAppConfigReader
     {
         string AppConfigToString(string appConfigKey);
 
-        int AppConfigToInt32(string appConfigKey, int defaultValue = 0);
+        //int AppConfigToInt32(string appConfigKey, int defaultValue = 0);
 
-        bool IsSwitchedOn(string appConfigKey);
+        //bool IsSwitchedOn(string appConfigKey);
 
-        string GetConnectionString(string connectionStringName);
+        //string GetConnectionString(string connectionStringName);
     }
 }

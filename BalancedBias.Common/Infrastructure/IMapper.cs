@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BalancedBias.Common.Config
+namespace BalancedBias.Common.Infrastructure
 {
-    public class AppConfigReader
+    public interface IMapper<TInput, TOutput>
     {
+        TOutput MapFrom(TInput input);
     }
 }
