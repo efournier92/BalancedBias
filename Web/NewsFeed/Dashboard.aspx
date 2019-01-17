@@ -28,7 +28,7 @@
         
         <asp:Repeater ID="gvRss" runat="server">
            <ItemTemplate>
-               <div class="card" style="width: 18rem;">
+               <div class="card mb-2" style="width: 18rem;">
                    <div class="card-body">
                        <h5 class="card-title"><%#Eval("Title") %></h5>
                        <h6 class="card-subtitle mb-2 text-muted"><%#Eval("PublishDate") %></h6>
