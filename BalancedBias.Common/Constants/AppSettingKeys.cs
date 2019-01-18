@@ -9,5 +9,6 @@ namespace BalancedBias.Common.Constants
     public static class AppSettingKeys
     {
         public const string MediaBasePath = "MediaBasePath";
+        public const string rssFeeds = "MediaBasePath";
     }
 }

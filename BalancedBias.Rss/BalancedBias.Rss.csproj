@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8D59A38-85BC-4CBB-8923-6DEBD32C9A49}</ProjectGuid>
+    <ProjectGuid>{ED0E3C52-52BB-416E-9F0A-666C965DFA05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BalancedBias.Common</RootNamespace>
-    <AssemblyName>BalancedBias.Common</AssemblyName>
+    <RootNamespace>BalancedBias.Rss</RootNamespace>
+    <AssemblyName>BalancedBias.Rss</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,25 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Core">
-      <HintPath>..\packages\Spring.Core.2.0.1\lib\net45\Spring.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.3.1.9.463\lib\net40\StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap.Net4">
-      <HintPath>..\packages\structuremap.3.1.9.463\lib\net40\StructureMap.Net4.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,22 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationStartupCommand.cs" />
-    <Compile Include="Config\AppConfigReader.cs" />
-    <Compile Include="Config\IAppConfigReader.cs" />
-    <Compile Include="Config\IConfigurationVariablesService.cs" />
-    <Compile Include="Config\Sections\RssServiceSection.cs" />
-    <Compile Include="Constants\AppSettingKeys.cs" />
-    <Compile Include="Feeds\Feeds.cs" />
-    <Compile Include="Infrastructure\DependencyResolverGateway.cs" />
-    <Compile Include="Infrastructure\IDependencyResolver.cs" />
-    <Compile Include="Infrastructure\IMapper.cs" />
-    <Compile Include="Infrastructure\StructureMapRegistryInitializer.cs" />
-    <Compile Include="Plugins\SpringAndStructureMapDependencyResolver.cs" />
+    <Compile Include="Feed.cs" />
+    <Compile Include="RssService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\BalancedBias.Common\BalancedBias.Common.csproj">
+      <Project>{D8D59A38-85BC-4CBB-8923-6DEBD32C9A49}</Project>
+      <Name>BalancedBias.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,15 +7,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using BalancedBias.Common.Config;
+using BalancedBias.Common.Config.Sections;
 using BalancedBias.Common.Constants;
 using BalancedBias.Common.Feeds;
 using BalancedBias.Common.Infrastructure;
+using BalancedBias.Rss;
 
 public partial class Dashboard : System.Web.UI.Page
 {
     //private readonly IConfigurationVariablesService _configurationVariablesService;
     private readonly IAppConfigReader _appConfigReader;
     public string globalStylesUrl;
+    //private static readonly RssService _rssService = new RssService();
 
     public Dashboard() 
         : this(DependencyResolverGateway.Resolve<IAppConfigReader>())
@@ -39,29 +42,30 @@ public partial class Dashboard : System.Web.UI.Page
 
     private void PopulateRssFeed()
     {
-        //string rssFeedUrl = ConfigurationManager.AppSettings["RssFeedUrl"];
-        var rssFeedUrl = "https://abcnews.go.com/abcnews/topstories";
-        var feeds = new List<Feeds>();
-        var xDoc = XDocument.Load(rssFeedUrl);
-        var items = (from x in xDoc.Descendants("item")
-            select new
-            {
-                title = x.Element("title").Value,
-                link = x.Element("link").Value,
-                pubDate = x.Element("pubDate").Value,
-                description = x.Element("description").Value
-            });
-        if (items != null)
-        {
-            feeds.AddRange(items.Select(i => new Feeds
-            {
-                Title = i.title,
-                Link = i.link,
-                PublishDate = i.pubDate,
-                Description = i.description
-            }));
-        }
-        gvRss.DataSource = feeds;
-        gvRss.DataBind();
+        RssService.GetAllFeeds();
+        ////string rssFeedUrl = ConfigurationManager.AppSettings["RssFeedUrl"];
+        //var rssFeedUrl = "https://abcnews.go.com/abcnews/topstories";
+        //var feeds = new List<Feeds>();
+        //var xDoc = XDocument.Load(rssFeedUrl);
+        //var items = (from x in xDoc.Descendants("item")
+        //    select new
+        //    {
+        //        title = x.Element("title").Value,
+        //        link = x.Element("link").Value,
+        //        pubDate = x.Element("pubDate").Value,
+        //        description = x.Element("description").Value
+        //    });
+        //if (items != null)
+        //{
+        //    feeds.AddRange(items.Select(i => new Feeds
+        //    {
+        //        Title = i.title,
+        //        Link = i.link,
+        //        PublishDate = i.pubDate,
+        //        Description = i.description
+        //    }));
+        //}
+        //gvRss.DataSource = feeds;
+        //gvRss.DataBind();
     }
 }
