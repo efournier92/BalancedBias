@@ -46,8 +46,6 @@ namespace BalancedBias.Rss
             //    }
             //}
             var _Config = ConfigurationManager.GetSection("feedRetriever") as FeedRetrieverSection;
-
-            //var rssFeedUrl = "https://abcnews.go.com/abcnews/topstories";
             var allFeeds = new NewsCollection();
             foreach (FeedElement feed in _Config.Feeds)
             {
@@ -56,23 +54,20 @@ namespace BalancedBias.Rss
                 var items = (from x in xDoc.Descendants("item")
                              select new
                              {
-                                 title = x.Element("title") == null ? "" : x.Element("title").Value,
-                                 link = x.Element("link") == null ? "" : x.Element("link").Value,
-                                 pubDate = x.Element("pubDate") == null ? "" : x.Element("pubDate").Value,
-                                 description = x.Element("description") == null ? "" : x.Element("description").Value,
+                                 title = x.Element("title").Value,
+                                 link = x.Element("link").Value,
+                                 pubDate = x.Element("pubDate").Value,
+                                 description = x.Element("description").Value,
                              });
-                if (items != null)
+                currentFeed.Items = new List<Item>();
+                currentFeed.Items.AddRange(items.Select(i => new Item
                 {
-                    currentFeed.Items = new List<Item>();
-                    currentFeed.Items.AddRange(items.Select(i => new Item
-                    {
-                        Title = i.title,
-                        Link = i.link,
-                        PublishDate = i.pubDate,
-                        Description = i.description
-                    }));
-                    allFeeds.Feeds.Add(currentFeed);
-                }
+                    Title = i.title ?? "",
+                    Link = i.link ?? "",
+                    PublishDate = i.pubDate ?? "",
+                    Description = i.description ?? "",
+                }));
+                allFeeds.Feeds.Add(currentFeed);
             }
 
             return allFeeds;

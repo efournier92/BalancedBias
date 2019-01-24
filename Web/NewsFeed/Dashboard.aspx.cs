@@ -39,7 +39,9 @@ public partial class Dashboard : System.Web.UI.Page
     {
         var mediaBasePath = _appConfigReader.AppConfigToString(AppSettingKeys.MediaBasePath);
         globalStylesUrl = mediaBasePath + "css/globalStyles.css";
-        RssService.GetFeeds();
+        var allFeeds = RssService.GetFeeds();
+        gvRss.DataSource = allFeeds.Feeds;
+        gvRss.DataBind();
         //public string path = mediaBasePath;s
     }
 
