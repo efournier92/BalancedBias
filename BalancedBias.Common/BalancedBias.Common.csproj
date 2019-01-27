@@ -56,22 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationStartupCommand.cs" />
     <Compile Include="Config\AppConfigReader.cs" />
     <Compile Include="Config\IAppConfigReader.cs" />
-    <Compile Include="Config\IConfigurationVariablesService.cs" />
     <Compile Include="Config\Sections\RssServiceSection.cs" />
     <Compile Include="Constants\AppSettingKeys.cs" />
     <Compile Include="Infrastructure\DependencyResolverGateway.cs" />
-    <Compile Include="Infrastructure\IDependencyResolver.cs" />
-    <Compile Include="Infrastructure\IMapper.cs" />
     <Compile Include="Infrastructure\StructureMapRegistryInitializer.cs" />
-    <Compile Include="Plugins\SpringAndStructureMapDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

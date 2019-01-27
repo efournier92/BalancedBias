@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BalancedBias.Common.Constants;
-using System.Configuration;
-using System.Web.Configuration;
+﻿using System.Configuration;
 
 
 namespace BalancedBias.Common.Config
@@ -22,10 +15,6 @@ namespace BalancedBias.Common.Config
         public string AppConfigToString(string appConfigKey)
         {
             var appSettingValue = ConfigurationManager.AppSettings[appConfigKey];
-
-            //WebConfigurationManager.AppSettings["newsFeedConfiguration"];
-            //Configuration.AppSettings["countoffiles"];
-            //ConfigurationManager.AppSettings["countoffiles"];
             return appSettingValue;
         }
 

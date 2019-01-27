@@ -9,13 +9,4 @@ C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\StructureMa
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\obj\Debug\BalancedBias.Web.dll
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\obj\Debug\BalancedBias.Web.pdb
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\BalancedBias.Common.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Spring.Core.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Common.Logging.Core.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Common.Logging.dll
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\BalancedBias.Common.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Spring.Core.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Spring.Core.xml
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Common.Logging.Core.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Common.Logging.Core.xml
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Common.Logging.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Web\bin\Debug\Common.Logging.xml

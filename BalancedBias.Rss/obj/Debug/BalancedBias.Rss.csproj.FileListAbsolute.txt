@@ -3,17 +3,8 @@ C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\BalancedBia
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\BalancedBias.Rss.pdb
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\BalancedBias.Common.dll
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\StructureMap.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Spring.Core.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Common.Logging.Core.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Common.Logging.dll
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\BalancedBias.Common.pdb
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\StructureMap.pdb
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\StructureMap.xml
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Spring.Core.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Spring.Core.xml
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Common.Logging.Core.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Common.Logging.Core.xml
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Common.Logging.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\bin\Debug\Common.Logging.xml
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\obj\Debug\BalancedBias.Rss.dll
 C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Rss\obj\Debug\BalancedBias.Rss.pdb
