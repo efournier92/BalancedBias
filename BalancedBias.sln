@@ -1,27 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NewsFeed", "http://localhost:58853", "{35388F5C-69E3-4454-963C-E7A970998A28}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BalancedBias", "http://localhost:58853", "{35388F5C-69E3-4454-963C-E7A970998A28}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
 		ProjectReferences = "{d8d59a38-85bc-4cbb-8923-6debd32c9a49}|BalancedBias.Common.dll;{ED0E3C52-52BB-416E-9F0A-666C965DFA05}|BalancedBias.Rss.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_58853"
-		Debug.AspNetCompiler.PhysicalPath = "Web\NewsFeed\"
+		Debug.AspNetCompiler.PhysicalPath = "Web\BalancedBias\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58853\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_58853"
-		Release.AspNetCompiler.PhysicalPath = "Web\NewsFeed\"
+		Release.AspNetCompiler.PhysicalPath = "Web\BalancedBias\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58853\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "Web\NewsFeed\"
+		SlnRelativePath = "Web\BalancedBias\"
 		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{93EFCD58-5092-43B1-8A31-1446694A7795} = {93EFCD58-5092-43B1-8A31-1446694A7795}
+		{A1B62CD0-3536-40C6-AC70-74C4B077439C} = {A1B62CD0-3536-40C6-AC70-74C4B077439C}
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Media", "http://localhost:63314", "{A1B62CD0-3536-40C6-AC70-74C4B077439C}"

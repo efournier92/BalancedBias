@@ -16,6 +16,8 @@ namespace BalancedBias.Rss
             foreach (FeedElement feed in config.Feeds)
             {
                 var currentFeed = new Feed();
+                currentFeed.Name = feed.Name;
+                currentFeed.Icon = feed.Icon;
                 var xDoc = XDocument.Load(feed.Url);
                 var items = (from x in xDoc.Descendants("item")
                     select new
@@ -35,9 +37,7 @@ namespace BalancedBias.Rss
                 }));
                 allFeeds.Feeds.Add(currentFeed);
             }
-
             return allFeeds;
-
         }
     }
 }

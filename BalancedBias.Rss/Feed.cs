@@ -15,6 +15,7 @@ namespace BalancedBias.Rss
     public class Feed
     {
         public string Name { get; set; }
+        public string Icon { get; set; }
         public List<Item> Items { get; set; }
 
         public Feed()

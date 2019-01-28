@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="Dashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Feeds.aspx.cs" Inherits="Dashboard" %>
 
 <!DOCTYPE html>
 
@@ -17,7 +17,7 @@
                 <asp:Repeater ID="gvRss" runat="server">
                     <ItemTemplate>
                         <div style="width:400px" class="m-2">
-                            <img src="http://logos-download.com/wp-content/uploads/2016/02/cnn-logo-original-hd-png-transparent.png" alt="Alternate Text" style="display:block; margin: 0 auto;height:50px;" />
+                            <img src="<%#Eval("Icon")%>" alt="Alternate Text" style="display:block; margin: 0 auto;height:50px;" />
                             <asp:Repeater DataSource='<%#Eval("Items")%>' runat="server">
                                 <ItemTemplate>
                                     <div class="card m-2" style="width:400px">
