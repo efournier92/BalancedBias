@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Feed.cs" />
+    <Compile Include="FeedsDbService.cs" />
     <Compile Include="RssService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

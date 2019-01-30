@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
 using System.Xml.Linq;
@@ -36,6 +37,17 @@ namespace BalancedBias.Rss
                     Description = i.description ?? "",
                 }));
                 allFeeds.Feeds.Add(currentFeed);
+                System.Threading.Thread.Sleep(3000);
+                foreach (var currentFeedItem in currentFeed.Items)
+                {
+                    var title = currentFeedItem.Title;
+                    var link = currentFeedItem.Link;
+                    var pubDate = currentFeedItem.PublishDate;
+                    var description = currentFeedItem.Description;
+                    FeedsDbService.AddNewFeedItem(title, link, pubDate, description);
+                    var x = DateTime.Today;
+                    FeedsDbService.GetFeedItemsByDate(x);
+                }
             }
             return allFeeds;
         }
