@@ -1,8 +1,5 @@
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Common\obj\Debug\BalancedBias.Common.csprojResolveAssemblyReference.cache
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Common\bin\Debug\BalancedBias.Common.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Common\bin\Debug\BalancedBias.Common.pdb
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Common\obj\Debug\BalancedBias.Common.dll
-C:\Users\efournier\CodeSpace\BalancedBias\BalancedBias.Common\obj\Debug\BalancedBias.Common.pdb
+C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\BalancedBias.Common.dll
+C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\BalancedBias.Common.pdb
 C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\Common.Logging.Core.dll
 C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\Common.Logging.dll
 C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\Spring.Core.dll
@@ -17,3 +14,6 @@ C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\Spring.C
 C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\StructureMap.pdb
 C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\StructureMap.xml
 C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\bin\Debug\StructureMap.Net4.pdb
+C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\obj\Debug\BalancedBias.Common.csprojResolveAssemblyReference.cache
+C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\obj\Debug\BalancedBias.Common.dll
+C:\Users\efournier\Codespace\BalancedBias\BalancedBias.Common\obj\Debug\BalancedBias.Common.pdb

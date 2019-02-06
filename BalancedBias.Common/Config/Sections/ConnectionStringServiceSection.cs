@@ -38,7 +38,7 @@ namespace BalancedBias.Common.Config.Sections
     public class ConnectionStringServiceSection : ConfigurationSection
     {
         [ConfigurationProperty("connectionStrings")]
-        public ConnectionStringCollection ConnectionString
+        public ConnectionStringCollection ConnectionStrings
         {
             get { return (ConnectionStringCollection)this["connectionStrings"]; }
             set { this["connectionStrings"] = value; }

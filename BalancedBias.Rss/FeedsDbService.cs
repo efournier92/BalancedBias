@@ -10,8 +10,7 @@ namespace BalancedBias.Rss
 {
     public class FeedsDbService
     {
-        private static ConnectionStringServiceSection _connectionStringSection = ConfigurationManager.GetSection("connectionStrings") as ConnectionStringServiceSection;
-        private string _connectionString = _connectionStringSection.ConnectionString;
+        private static readonly ConnectionStringServiceSection Config = ConfigurationManager.GetSection("connectionStringSection") as ConnectionStringServiceSection;
 
         public static void AddNewFeedItem(string title, string link, string publishDate, string description)
         {
@@ -26,6 +25,7 @@ namespace BalancedBias.Rss
             command.Parameters.Add(new SqlParameter("@Link", link));
             command.Parameters.Add(new SqlParameter("@PublishDate", publishDate));
             command.Parameters.Add(new SqlParameter("@Description", description));
+            var connectionStrings = Config.ConnectionStrings;
             DbHelper.ExecuteReader("Data Source=EFOURNIER-LT\\SQLEXPRESS;Initial Catalog=BalancedBias;Integrated Security=True;Connect Timeout=20;Encrypt=False;TrustServerCertificate=False", command);
         }
 

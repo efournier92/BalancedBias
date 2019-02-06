@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Config\AppConfigReader.cs" />
     <Compile Include="Config\IAppConfigReader.cs" />
-    <Compile Include="Config\Sections\ConnectionStrings.cs" />
+    <Compile Include="Config\Sections\ConnectionStringServiceSection.cs" />
     <Compile Include="Config\Sections\RssServiceSection.cs" />
     <Compile Include="Connectivity\DbHelper.cs" />
     <Compile Include="Constants\AppSettingKeys.cs" />
