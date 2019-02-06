@@ -2,15 +2,13 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using BalancedBias.Common;
-using BalancedBias.Common.Config.Sections;
 using BalancedBias.Common.Connectivity;
 
 namespace BalancedBias.Rss
 {
     public class FeedsDbService
     {
-        private static readonly ConnectionStringServiceSection Config = ConfigurationManager.GetSection("connectionStringSection") as ConnectionStringServiceSection;
+        private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["FeedsDb"].ConnectionString;
 
         public static void AddNewFeedItem(string title, string link, string publishDate, string description)
         {
@@ -20,13 +18,15 @@ namespace BalancedBias.Rss
                 CommandType = CommandType.StoredProcedure
             };
 
-            // Adding sql parameters
             command.Parameters.Add(new SqlParameter("@Title", title));
             command.Parameters.Add(new SqlParameter("@Link", link));
             command.Parameters.Add(new SqlParameter("@PublishDate", publishDate));
             command.Parameters.Add(new SqlParameter("@Description", description));
-            var connectionStrings = Config.ConnectionStrings;
-            DbHelper.ExecuteReader("Data Source=EFOURNIER-LT\\SQLEXPRESS;Initial Catalog=BalancedBias;Integrated Security=True;Connect Timeout=20;Encrypt=False;TrustServerCertificate=False", command);
+
+            if (IsFeedItemUnique(title))
+            {
+                DbHelper.ExecuteReader(ConnectionString, command);
+            }
         }
 
         public static void GetFeedItemsByDate(DateTime publishDate)
@@ -44,7 +44,23 @@ namespace BalancedBias.Rss
             command.Parameters.Add(new SqlParameter("@Month", day));
             command.Parameters.Add(new SqlParameter("@Day", month));
             command.Parameters.Add(new SqlParameter("@Year", year));
-            DbHelper.ExecuteReader("Data Source=EFOURNIER-LT\\SQLEXPRESS;Initial Catalog=BalancedBias;Integrated Security=True;Connect Timeout=20;Encrypt=False;TrustServerCertificate=False", command);
+        }
+
+        public static bool IsFeedItemUnique(string title)
+        {
+            var command = new SqlCommand
+            {
+                CommandText = "Get_Feed_Item_By_Title",
+                CommandType = CommandType.StoredProcedure
+            };
+
+            command.Parameters.Add(new SqlParameter("@Title", title));
+            SqlParameter returnParameter = command.Parameters.Add("RetVal", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            DbHelper.ExecuteReader(ConnectionString, command);
+
+            int id = (int)returnParameter.Value;
+            return id == 0;
         }
     }
 }

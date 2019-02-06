@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
 using System.Xml.Linq;
-using BalancedBias.Common.Config.Sections;
+using BalancedBias.Common.Config;
 
 namespace BalancedBias.Rss
 {
@@ -44,7 +44,10 @@ namespace BalancedBias.Rss
                     var link = currentFeedItem.Link;
                     var pubDate = currentFeedItem.PublishDate;
                     var description = currentFeedItem.Description;
-                    FeedsDbService.AddNewFeedItem(title, link, pubDate, description);
+                    if (FeedsDbService.IsFeedItemUnique(title))
+                    {
+                        FeedsDbService.AddNewFeedItem(title, link, pubDate, description);
+                    }
                     var x = DateTime.Today;
                     FeedsDbService.GetFeedItemsByDate(x);
                 }

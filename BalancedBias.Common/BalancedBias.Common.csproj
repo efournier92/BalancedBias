@@ -57,9 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\AppConfigReader.cs" />
+    <Compile Include="Config\FeedElementCollection.cs" />
+    <Compile Include="Config\GenericConfigurationElementCollection.cs" />
     <Compile Include="Config\IAppConfigReader.cs" />
-    <Compile Include="Config\Sections\ConnectionStringServiceSection.cs" />
-    <Compile Include="Config\Sections\RssServiceSection.cs" />
+    <Compile Include="Config\ConnectionStringCollection.cs" />
+    <Compile Include="Config\ConnectionStringElement.cs" />
+    <Compile Include="Config\ConnectionStringServiceSection.cs" />
+    <Compile Include="Config\IKeyContainer.cs" />
+    <Compile Include="Config\RssServiceSection.cs" />
     <Compile Include="Connectivity\DbHelper.cs" />
     <Compile Include="Constants\AppSettingKeys.cs" />
     <Compile Include="Infrastructure\DependencyResolverGateway.cs" />
