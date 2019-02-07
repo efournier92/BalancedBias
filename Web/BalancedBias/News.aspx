@@ -12,9 +12,33 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+<script>
+    $(document).ready(function () {
+        var pageCenter = (document.body.scrollWidth - document.body.clientWidth) / 2;
+        window.scrollBy(pageCenter, 0);
+    });
+</script>
     <div class="channels-container">
         <form id="Form1" runat="server">
-            <div class="w-100">
+            <asp:DropDownList ID="datesDropDown" runat="server" OnSelectedIndexChanged="SearchArticlesByDate" AutoPostBack="True"></asp:DropDownList>
+            <form action="">
+                <div class="line-container">
+                    <span class="line arrow-left"></span>
+                    <label>
+                        BalancedBias
+                    </label>
+                    <span class="line arrow-right"></span>
+                </div>
+                <div style="width: 95%; margin: 0 3%; margin-top: -24px;">
+                    <div class="d-flex justify-content-start;">
+                        More Liberal
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        More Conservative
+                    </div>
+                </div>
+            </form>
+            <div id="main-container" class="w-100">
                 <div class="d-flex flex-row">
                     <asp:Repeater ID="gvRss" runat="server">
                         <ItemTemplate>
@@ -39,5 +63,6 @@
             </div>
         </form>
     </div>
+
 </body>
 </html>

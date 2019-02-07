@@ -5,11 +5,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[add_new_article]
-    @Channel nvarchar(50),
-    @Title nvarchar(max),
+    @Channel nvarchar(255),
+    @Title nvarchar(400),
     @Body nvarchar(max),
     @Url nvarchar(max),
-    @PublishDate nvarchar(50)
+    @PublishDate nvarchar(255)
 AS
 
 INSERT INTO [dbo].[articles] (Channel, Title, Body, Url, PublishDate)

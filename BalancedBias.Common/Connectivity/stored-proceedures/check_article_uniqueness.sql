@@ -5,7 +5,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[check_article_uniqueness]
-    @Title nvarchar(50)
+    @Title nvarchar(400)
 AS
 
 declare @return nvarchar;

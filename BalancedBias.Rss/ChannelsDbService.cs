@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using BalancedBias.Common.Config;
 using BalancedBias.Common.Connectivity;
 
 namespace BalancedBias.Rss
@@ -27,42 +29,126 @@ namespace BalancedBias.Rss
 
             if (IsArticleUnique(title))
             {
-                DbHelper.ExecuteReader(ConnectionString, command);
+                var reader = DbHelper.ExecuteReader(ConnectionString, command);
+                reader.Close();
             }
         }
 
-        public static void GetArticlesByDate(DateTime publishDate)
+        public static NewsCollection GetAllChannelsFromDb()
         {
-            var day = publishDate.Day;
-            var month = publishDate.Month;
-            var year = publishDate.Year;
+            var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
+            var newsCollection = new NewsCollection();
+            if (config == null) return newsCollection;
+            foreach (ChannelElement channel in config.Channels)
+            {
+                newsCollection.Channels.Add(GetArticlesByChannel(channel));
+            }
+
+            return newsCollection;
+        }
+
+        public static NewsCollection GetChannelsFromDbByDate(string date)
+        {
+            var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
+            var newsCollection = new NewsCollection();
+            if (config == null) return newsCollection;
+            foreach (ChannelElement channel in config.Channels)
+            {
+                newsCollection.Channels.Add(GetArticlesByDateAndChannel(channel, date));
+            }
+
+            return newsCollection;
+        }
+
+
+        public static List<string> GetUniqueArticleDates()
+        {
+            var uniqueDates = new List<string>();
+            var command = new SqlCommand
+            {
+                CommandText = "get_all_stored_dates",
+                CommandType = CommandType.StoredProcedure
+            };
+            var reader = DbHelper.ExecuteReader(ConnectionString, command) as SqlDataReader;
+            if (reader == null) return uniqueDates;
+            while (reader.Read())
+            {
+                var date = Convert.ToString(reader["publishDate"]).Split(null)[0];
+                if (!uniqueDates.Contains(date))
+                {
+                    uniqueDates.Add(date);
+                }
+            }
+            reader.Close();
+            return uniqueDates;
+        }
+
+        public static Channel GetArticlesByDateAndChannel(ChannelElement channelElement, string publishDate)
+        {
+            var channel = new Channel();
+            channel.Name = channelElement.Name;
+            channel.Icon = channelElement.Icon;
 
             var command = new SqlCommand
             {
-                CommandText = "get_articles_by_date",
+                CommandText = "get_articles_by_date_and_channel",
                 CommandType = CommandType.StoredProcedure
             };
 
-            command.Parameters.Add(new SqlParameter("@Month", day));
-            command.Parameters.Add(new SqlParameter("@Day", month));
-            command.Parameters.Add(new SqlParameter("@Year", year));
+            command.Parameters.Add(new SqlParameter("@Channel", channel.Name));
+            command.Parameters.Add(new SqlParameter("@Date", publishDate));
             var reader = DbHelper.ExecuteReader(ConnectionString, command) as SqlDataReader;
-            if (reader == null) return;
-            var channelsList = new List<Article>();
-
+            if (reader == null) return channel;
             while (reader.Read())
             {
                 var article = new Article
                 {
+                    Channel = Convert.ToString(reader["channel"].ToString()),
                     Title = Convert.ToString(reader["title"].ToString()),
+                    Body = Convert.ToString(reader["body"].ToString()),
                     Url = string.IsNullOrEmpty(reader["url"].ToString())
                             ? ""
                             : reader["url"].ToString(),
-                    PublishDate = Convert.ToString(reader["publishDate"].ToString()),
-                    Body = Convert.ToString(reader["description"])
+                    PublishDate = Convert.ToString(reader["publishDate"].ToString())
                 };
-                channelsList.Add(article);
+                channel.Articles.Add(article);
             }
+            reader.Close();
+            return channel;
+        }
+
+        public static Channel GetArticlesByChannel(ChannelElement channelElement)
+        {
+            var channel = new Channel();
+            channel.Name = channelElement.Name;
+            channel.Icon = channelElement.Icon;
+
+            var command = new SqlCommand
+            {
+                CommandText = "get_articles_by_channel",
+                CommandType = CommandType.StoredProcedure
+            };
+
+            command.Parameters.Add(new SqlParameter("@Channel", channel.Name));
+            var reader = DbHelper.ExecuteReader(ConnectionString, command) as SqlDataReader;
+            if (reader == null) return channel;
+            while (reader.Read())
+            {
+                var article = new Article
+                {
+                    Channel = Convert.ToString(reader["channel"].ToString()),
+                    Title = Convert.ToString(reader["title"].ToString()),
+                    Body = Convert.ToString(reader["body"].ToString()),
+                    Url = string.IsNullOrEmpty(reader["url"].ToString())
+                        ? ""
+                        : reader["url"].ToString(),
+                    PublishDate = Convert.ToString(reader["publishDate"].ToString())
+                };
+                channel.Articles.Add(article);
+            }
+            reader.Close();
+            channel.Articles = channel.Articles.OrderByDescending(c => c.PublishDate).ToList();
+            return channel;
         }
 
         public static bool IsArticleUnique(string title)
@@ -77,9 +163,9 @@ namespace BalancedBias.Rss
             command.Parameters.Add(new SqlParameter("@Title", title));
             var returnParameter = command.Parameters.Add("RetVal", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
-            DbHelper.ExecuteReader(ConnectionString, command);
-
+            var reader = DbHelper.ExecuteReader(ConnectionString, command);
             int id = (int)returnParameter.Value;
+            reader.Close();
             return id == 0;
         }
     }

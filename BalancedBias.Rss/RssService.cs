@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
+using System.Globalization;
 using System.Xml.Linq;
 using BalancedBias.Common.Config;
 
@@ -9,11 +10,11 @@ namespace BalancedBias.Rss
 {
     public class RssService
     {
-        public static NewsCollection GetChannels()
+        public static void PersistNewArticles()
         {
             var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
             var allChannels = new NewsCollection();
-            if (config == null) return allChannels;
+            if (config == null) return;
             foreach (ChannelElement channel in config.Channels)
             {
                 var currentChannel = new Channel
@@ -23,20 +24,21 @@ namespace BalancedBias.Rss
                 };
                 var xDoc = XDocument.Load(channel.Url);
                 var items = (from x in xDoc.Descendants("item")
-                    select new
-                    {
-                        title = x.Element("title").Value,
-                        link = x.Element("link").Value,
-                        pubDate = x.Element("pubDate").Value,
-                        description = x.Element("description").Value,
-                    });
-                currentChannel.Articles = new List<Article>();
+                             select new
+                             {
+                                 title = x.Element("title").Value,
+                                 body = x.Element("description").Value,
+                                 url = x.Element("link").Value,
+                                 pubDate = x.Element("pubDate").Value,
+                             }
+                        );
                 currentChannel.Articles.AddRange(items.Select(i => new Article
                 {
-                    Title = i.title ?? "",
-                    Url = i.link ?? "",
-                    PublishDate = i.pubDate ?? "",
-                    Body = i.description ?? "",
+                    Channel = channel.Name,
+                    Title = i.title,
+                    Body = i.body,
+                    Url = i.url,
+                    PublishDate = DateTime.Parse(i.pubDate).ToString(CultureInfo.InvariantCulture)
                 }));
                 allChannels.Channels.Add(currentChannel);
                 foreach (var currentArticle in currentChannel.Articles)
@@ -52,7 +54,6 @@ namespace BalancedBias.Rss
                     }
                 }
             }
-            return allChannels;
         }
     }
 }
