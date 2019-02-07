@@ -6,24 +6,25 @@ using BalancedBias.Rss;
 
 public partial class Dashboard : System.Web.UI.Page
 {
-    private readonly IAppConfigReader _appConfigReader;
-    public string GlobalStylesUrl;
+    private static IAppConfigReader _appConfigReader;
+    public string MediaBasePath;
 
     public Dashboard()
         : this(DependencyResolverGateway.Resolve<IAppConfigReader>())
-    { }
+    {
+
+    }
 
     private Dashboard(IAppConfigReader appConfigReader)
     {
         _appConfigReader = appConfigReader;
+        MediaBasePath = _appConfigReader.AppConfigToString(AppSettingKeys.MediaBasePath);
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        var mediaBasePath = _appConfigReader.AppConfigToString(AppSettingKeys.MediaBasePath);
-        GlobalStylesUrl = mediaBasePath + "css/globalStyles.css";
-        var allFeeds = RssService.GetFeeds();
-        gvRss.DataSource = allFeeds.Feeds;
+        var allChannels = RssService.GetChannels();
+        gvRss.DataSource = allChannels.Channels;
         gvRss.DataBind();
     }
 }

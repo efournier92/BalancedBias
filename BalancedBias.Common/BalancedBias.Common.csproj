@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,15 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\AppConfigReader.cs" />
-    <Compile Include="Config\FeedElementCollection.cs" />
-    <Compile Include="Config\GenericConfigurationElementCollection.cs" />
+    <Compile Include="Config\ChannelElement.cs" />
+    <Compile Include="Config\ChannelElementCollection.cs" />
     <Compile Include="Config\IAppConfigReader.cs" />
-    <Compile Include="Config\ConnectionStringCollection.cs" />
-    <Compile Include="Config\ConnectionStringElement.cs" />
-    <Compile Include="Config\ConnectionStringServiceSection.cs" />
-    <Compile Include="Config\IKeyContainer.cs" />
     <Compile Include="Config\RssServiceSection.cs" />
     <Compile Include="Connectivity\DbHelper.cs" />
+    <Content Include="Connectivity\stored-proceedures\check_article_uniqueness.sql" />
+    <Content Include="Connectivity\stored-proceedures\get_articles_by_date_and_channel.sql" />
     <Compile Include="Constants\AppSettingKeys.cs" />
     <Compile Include="Infrastructure\DependencyResolverGateway.cs" />
     <Compile Include="Infrastructure\StructureMapRegistryInitializer.cs" />
@@ -74,7 +73,13 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Connectivity\stored-proceedures\add_new_article.sql" />
+    <Content Include="Connectivity\stored-proceedures\create_channel_table.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

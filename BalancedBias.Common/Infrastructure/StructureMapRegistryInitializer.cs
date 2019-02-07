@@ -1,7 +1,7 @@
 ﻿using BalancedBias.Common.Config;
 using StructureMap.Configuration.DSL;
 
-namespace BalancedBias.Web
+namespace BalancedBias.Common.Infrastructure
 {
     public class StructureMapRegistryInitializer : Registry
     {

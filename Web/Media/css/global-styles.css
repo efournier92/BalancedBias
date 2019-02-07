@@ -1,0 +1,12 @@
+﻿.channels-container {
+    width: 200%;
+    background-image: linear-gradient(to right, #42A5F5 , #EF5350);
+}
+
+.channel-icon {
+    /*mix-blend-mode: multiply;
+    filter: brightness(2);*/
+    display:block;
+    margin: 0 auto;
+    height:50px;
+}

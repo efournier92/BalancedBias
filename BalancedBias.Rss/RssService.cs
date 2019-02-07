@@ -9,17 +9,19 @@ namespace BalancedBias.Rss
 {
     public class RssService
     {
-        public static NewsCollection GetFeeds()
+        public static NewsCollection GetChannels()
         {
             var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
-            var allFeeds = new NewsCollection();
-            if (config == null) return allFeeds;
-            foreach (FeedElement feed in config.Feeds)
+            var allChannels = new NewsCollection();
+            if (config == null) return allChannels;
+            foreach (ChannelElement channel in config.Channels)
             {
-                var currentFeed = new Feed();
-                currentFeed.Name = feed.Name;
-                currentFeed.Icon = feed.Icon;
-                var xDoc = XDocument.Load(feed.Url);
+                var currentChannel = new Channel
+                {
+                    Name = channel.Name,
+                    Icon = channel.Icon
+                };
+                var xDoc = XDocument.Load(channel.Url);
                 var items = (from x in xDoc.Descendants("item")
                     select new
                     {
@@ -28,31 +30,29 @@ namespace BalancedBias.Rss
                         pubDate = x.Element("pubDate").Value,
                         description = x.Element("description").Value,
                     });
-                currentFeed.Items = new List<Item>();
-                currentFeed.Items.AddRange(items.Select(i => new Item
+                currentChannel.Articles = new List<Article>();
+                currentChannel.Articles.AddRange(items.Select(i => new Article
                 {
                     Title = i.title ?? "",
-                    Link = i.link ?? "",
+                    Url = i.link ?? "",
                     PublishDate = i.pubDate ?? "",
-                    Description = i.description ?? "",
+                    Body = i.description ?? "",
                 }));
-                allFeeds.Feeds.Add(currentFeed);
-                System.Threading.Thread.Sleep(3000);
-                foreach (var currentFeedItem in currentFeed.Items)
+                allChannels.Channels.Add(currentChannel);
+                foreach (var currentArticle in currentChannel.Articles)
                 {
-                    var title = currentFeedItem.Title;
-                    var link = currentFeedItem.Link;
-                    var pubDate = currentFeedItem.PublishDate;
-                    var description = currentFeedItem.Description;
-                    if (FeedsDbService.IsFeedItemUnique(title))
+                    var channelName = currentChannel.Name;
+                    var title = currentArticle.Title;
+                    var link = currentArticle.Url;
+                    var pubDate = currentArticle.PublishDate;
+                    var description = currentArticle.Body;
+                    if (ChannelsDbService.IsArticleUnique(title))
                     {
-                        FeedsDbService.AddNewFeedItem(title, link, pubDate, description);
+                        ChannelsDbService.AddNewArticle(channelName, title, link, pubDate, description);
                     }
-                    var x = DateTime.Today;
-                    FeedsDbService.GetFeedItemsByDate(x);
                 }
             }
-            return allFeeds;
+            return allChannels;
         }
     }
 }

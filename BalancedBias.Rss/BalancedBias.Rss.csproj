@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Feed.cs" />
-    <Compile Include="FeedsDbService.cs" />
+    <Compile Include="Channel.cs" />
+    <Compile Include="ChannelsDbService.cs" />
+    <Compile Include="Article.cs" />
+    <Compile Include="NewsCollection.cs" />
     <Compile Include="RssService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

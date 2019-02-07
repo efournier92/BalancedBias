@@ -2,17 +2,17 @@
 
 namespace BalancedBias.Common.Config
 {
-    [ConfigurationCollection(typeof(ConnectionStringElement))]
-    public class ConnectionStringCollection : ConfigurationElementCollection
+    [ConfigurationCollection(typeof(ChannelElement))]
+    public class ChannelElementCollection : ConfigurationElementCollection
     {
         protected override ConfigurationElement CreateNewElement()
         {
-            return new ConnectionStringElement();
+            return new ChannelElement();
         }
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((ConnectionStringElement)element).Key;
+            return ((ChannelElement)element).Name;
         }
     }
 }

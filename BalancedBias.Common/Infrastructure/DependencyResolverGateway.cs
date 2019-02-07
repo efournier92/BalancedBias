@@ -1,5 +1,4 @@
 ﻿using StructureMap;
-using BalancedBias.Web;
 
 namespace BalancedBias.Common.Infrastructure
 {
