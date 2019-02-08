@@ -24,5 +24,12 @@ namespace BalancedBias.Common.Config
             get { return (string)this["icon"]; }
             set { this["icon"] = value; }
         }
+
+        [ConfigurationProperty("template")]
+        public string Template
+        {
+            get { return (string)this["template"]; }
+            set { this["template"] = value; }
+        }
     }
 }

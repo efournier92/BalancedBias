@@ -1,4 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="News.aspx.cs" Inherits="Dashboard" %>
+<%@ Register TagPrefix="BalancedBias" TagName="BaseArticleTemplate" Src="~/ArticleTemplates/BaseArticleTemplate.ascx" %>
+<%@ Reference Control="~/ArticleTemplates/GenericArticleTemplate.ascx" %>
+
 
 <!DOCTYPE html>
 
@@ -50,10 +53,11 @@
                         <ItemTemplate>
                             <div style="width: 400px" class="m-2">
                                 <img src="<%#Eval("Icon")%>" alt="Alternate Text" class="channel-icon" />
-                                <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>'runat="server">
+                                <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>' runat="server" OnItemDataBound="OnArticleDataBound">
                                     <ItemTemplate>
-                                        <%--<BalancedBias:BaseArticleTemplate runat="server" ID="TemplateGeneric"/>--%>
-                                        <asp:PlaceHolder OnItemDataBound="OnArticleDataBound" runat="server" ID="templatePlaceholder" ></asp:PlaceHolder>
+                                        <%--<BalancedBias:BaseArticleTemplate runat="server" ID="TemplateGeneric" ArticleTemplateType="Generic"/>--%>
+                                        <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+                                        <%--<asp:PlaceHolder OnItemDataBound="OnArticleDataBound" runat="server" ID="templatePlaceholder" ></asp:PlaceHolder>--%>
 <%--                                            <div class="card m-2" style="width: 400px">
                                                 <div class="card-body">
                                                     <h5 class="card-title"><%#Eval("Title") %></h5>

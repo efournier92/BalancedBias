@@ -63,9 +63,16 @@ public partial class Dashboard : System.Web.UI.Page
 
     protected void OnArticleDataBound(object sender, RepeaterItemEventArgs e)
     {
-        var ucSimpleControl = LoadControl("~/ArticleTemplates/GenericArticleTemplate.ascx");
-        var placeh = e.Item.FindControl("templatePlaceholder") as PlaceHolder;
-        p1.Controls.Add(ucSimpleControl);
+
+        var dict = new Dictionary<string, string>();
+        dict.Add("generic", "~/ArticleTemplates/GenericArticleTemplate.ascx");
+        
+        var ucSimpleControl = (GenericArticleTemplates)Page.LoadControl(dict["generic"]);
+
+        ucSimpleControl.ArticleTemplate = (Article)e.Item.DataItem;
+        var placeholder = e.Item.FindControl("PlaceHolder1") as PlaceHolder;
+        placeholder.Controls.Add(ucSimpleControl);
     }
+
+
 }
-  

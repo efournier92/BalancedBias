@@ -6,6 +6,7 @@ namespace BalancedBias.Rss
     {
         public string Name { get; set; }
         public string Icon { get; set; }
+        public string Template { get; set; }
         public List<Article> Articles { get; set; }
 
         public Channel()

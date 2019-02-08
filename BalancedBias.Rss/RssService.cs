@@ -20,7 +20,8 @@ namespace BalancedBias.Rss
                 var currentChannel = new Channel
                 {
                     Name = channel.Name,
-                    Icon = channel.Icon
+                    Icon = channel.Icon,
+                    Template = channel.Template
                 };
                 var xDoc = XDocument.Load(channel.Url);
                 var items = (from x in xDoc.Descendants("item")

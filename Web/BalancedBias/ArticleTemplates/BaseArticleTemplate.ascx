@@ -1,11 +1,7 @@
-﻿<%@ Control Language="C#" ClassName="generic" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BaseArticleTemplate.ascx.cs" Inherits="BaseArticleTemplates" %>
+<%--<%@ Control Language="C#" ClassName="generic" %>--%>
 <%@ Register TagPrefix="BalancedBias" TagName="GenericArticleTemplate" Src="~/ArticleTemplates/GenericArticleTemplate.ascx" %>
+<%@ Register TagPrefix="BalancedBias" TagName="TrumpArticleTemplate" Src="~/ArticleTemplates/TrumpArticleTemplate.ascx" %>
 
-<div class="card m-2" style="width: 400px">
-    <div class="card-body">
-        <h5 class="card-title"><%#Eval("Title") %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%#Eval("PublishDate") %></h6>
-        <p class="card-text"><%#Eval("Body") %></p>
-        <a href="<%#Eval("Url") %>" class="card-url">Read More</a>
-    </div>
-</div>
+<BalancedBias:GenericArticleTemplate runat="server" ID="GenericArticleTemplate1"/>
+<BalancedBias:TrumpArticleTemplate runat="server" ID="TrumpArticleTemplate"/>
