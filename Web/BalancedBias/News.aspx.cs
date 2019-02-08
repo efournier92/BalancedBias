@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using BalancedBias.Common.Config;
 using BalancedBias.Common.Constants;
@@ -26,9 +27,12 @@ public partial class Dashboard : System.Web.UI.Page
         MediaBasePath = _appConfigReader.AppConfigToString(AppSettingKeys.MediaBasePath);
     }
 
+    public object TemplateType { get; set; }
+    public PlaceHolder Placeholder1 = new PlaceHolder();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-;
+        TemplateType = "TemplateGeneric";
 
         if (!Page.IsPostBack)
         {
@@ -41,7 +45,6 @@ public partial class Dashboard : System.Web.UI.Page
             datesDropDown.DataSource = allDates;
             datesDropDown.DataBind();
         }
-
     }
 
     protected void SearchArticlesByDate(object sender, EventArgs e)
@@ -58,5 +61,11 @@ public partial class Dashboard : System.Web.UI.Page
         gvRss.DataBind();
     }
 
+    protected void OnArticleDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        var ucSimpleControl = LoadControl("~/ArticleTemplates/GenericArticleTemplate.ascx");
+        var placeh = e.Item.FindControl("templatePlaceholder") as PlaceHolder;
+        p1.Controls.Add(ucSimpleControl);
+    }
 }
   

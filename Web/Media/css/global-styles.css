@@ -1,6 +1,13 @@
 ﻿.channels-container {
-    width: 200%;
+    width: 2948px;
     background-image: linear-gradient(to right, #42A5F5 , #EF5350);
+
+    /*background: black;*/ 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
 }
 
 .channel-icon {
@@ -9,4 +16,73 @@
     display: block;
     margin: 0 auto;
     height: 50px;
+}
+
+.logo {
+    font-size: 2.25em;
+    font-weight: bold;
+}
+
+.theme-liberal {
+    color: #304FFE;
+}
+
+.theme-conservative {
+    color: #C62828;
+}
+
+.more-label {
+    font-size: 1.25em;
+    font-weight: bold;
+    opacity: 0.75;
+}
+
+.line-container {
+    display: flex;
+    width: 95%;
+    margin: 20px auto;
+    align-items: center;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+}
+
+.line-liberal {
+    background: #304FFE;
+}
+
+.line-conservative {
+    background: #C62828 ;
+}
+
+.line.arrow-right:after {
+    position: absolute;
+    content: '';
+    bottom: -10px;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #C62828;
+}
+
+.line.arrow-left:after {
+    position: absolute;
+    content: '';
+    top: -10px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #304FFE;
+}
+
+label {
+    margin: 0 15px;
+    margin-bottom: 0 !important;
 }

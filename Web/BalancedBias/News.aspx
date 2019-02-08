@@ -20,40 +20,48 @@
 </script>
     <div class="channels-container">
         <form id="Form1" runat="server">
-            <asp:DropDownList ID="datesDropDown" runat="server" OnSelectedIndexChanged="SearchArticlesByDate" AutoPostBack="True"></asp:DropDownList>
+            <div class="d-flex justify-content-center">
+                <asp:DropDownList ID="datesDropDown" runat="server" OnSelectedIndexChanged="SearchArticlesByDate" AutoPostBack="True"></asp:DropDownList>
+            </div>
             <form action="">
                 <div class="line-container">
-                    <span class="line arrow-left"></span>
+                    <span class="line line-liberal arrow-left"></span>
                     <label>
-                        BalancedBias
+                        <span class="logo">
+                            <span class="theme-liberal">Balanced</span><span class="theme-conservative">Bias</span>
+                        </span>
                     </label>
-                    <span class="line arrow-right"></span>
+                    <span class="line line-conservative arrow-right"></span>
                 </div>
-                <div style="width: 95%; margin: 0 3%; margin-top: -24px;">
-                    <div class="d-flex justify-content-start;">
-                        More Liberal
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        More Conservative
+                <div class="d-flex justify-content-center" style="width: 100%">
+                    <div class="d-flex justify-content-between" style="width: 90vw; margin: 0 3%; margin-top: -24px;">
+                        <div class="more-label theme-liberal">
+                            More Liberal
+                        </div>
+                        <div class="more-label theme-conservative">
+                            More Conservative
+                        </div>
                     </div>
                 </div>
             </form>
-            <div id="main-container" class="w-100">
+            <div id="main-container" class="">
                 <div class="d-flex flex-row">
                     <asp:Repeater ID="gvRss" runat="server">
                         <ItemTemplate>
                             <div style="width: 400px" class="m-2">
                                 <img src="<%#Eval("Icon")%>" alt="Alternate Text" class="channel-icon" />
-                                <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>' runat="server">
+                                <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>'runat="server">
                                     <ItemTemplate>
-                                        <div class="card m-2" style="width: 400px">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%#Eval("Title") %></h5>
-                                                <h6 class="card-subtitle mb-2 text-muted"><%#Eval("PublishDate") %></h6>
-                                                <p class="card-text"><%#Eval("Body") %></p>
-                                                <a href="<%#Eval("Url") %>" class="card-url">Read More</a>
-                                            </div>
-                                        </div>
+                                        <%--<BalancedBias:BaseArticleTemplate runat="server" ID="TemplateGeneric"/>--%>
+                                        <asp:PlaceHolder OnItemDataBound="OnArticleDataBound" runat="server" ID="templatePlaceholder" ></asp:PlaceHolder>
+<%--                                            <div class="card m-2" style="width: 400px">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%#Eval("Title") %></h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted"><%#Eval("PublishDate") %></h6>
+                                                    <p class="card-text"><%#Eval("Body") %></p>
+                                                    <a href="<%#Eval("Url") %>" class="card-url">Read More</a>
+                                                </div>
+                                            </div>--%>
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
