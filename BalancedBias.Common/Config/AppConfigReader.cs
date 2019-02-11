@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 
-
 namespace BalancedBias.Common.Config
 {
     public class AppConfigReader : IAppConfigReader

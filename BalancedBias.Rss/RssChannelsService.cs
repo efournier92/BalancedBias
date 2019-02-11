@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
 using System.Globalization;
@@ -8,11 +7,11 @@ using BalancedBias.Common.Config;
 
 namespace BalancedBias.Rss
 {
-    public class RssService
+    public class RssChannelsService
     {
         public static void PersistNewArticles()
         {
-            var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
+            var config = ConfigurationManager.GetSection("rssChannelsService") as RssChannelsServiceSection;
             var allChannels = new NewsCollection();
             if (config == null) return;
             foreach (ChannelElement channel in config.Channels)

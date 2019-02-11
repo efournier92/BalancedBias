@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using BalancedBias.Common.Config;
 using BalancedBias.Common.Constants;
@@ -11,9 +9,7 @@ using BalancedBias.Rss;
 
 public partial class Dashboard : System.Web.UI.Page
 {
-    private static IAppConfigReader _appConfigReader;
     public string MediaBasePath;
-    public DropDownList DatesDropDown = new DropDownList();
 
     public Dashboard()
         : this(DependencyResolverGateway.Resolve<IAppConfigReader>())
@@ -23,28 +19,20 @@ public partial class Dashboard : System.Web.UI.Page
 
     private Dashboard(IAppConfigReader appConfigReader)
     {
-        _appConfigReader = appConfigReader;
-        MediaBasePath = _appConfigReader.AppConfigToString(AppSettingKeys.MediaBasePath);
+        MediaBasePath = appConfigReader.AppConfigToString(AppSettingKeys.MediaBasePath);
     }
-
-    public object TemplateType { get; set; }
-    public PlaceHolder Placeholder1 = new PlaceHolder();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        TemplateType = "TemplateGeneric";
+        if (Page.IsPostBack) return;
+        var todaysDate = DateTime.Today.ToString(CultureInfo.InvariantCulture).Split(null)[0];
+        datesDropDown.Text = todaysDate;
+        var allChannels = ChannelsDbService.GetChannelsFromDbByDate(todaysDate);
+        BindAllChannels(allChannels);
 
-        if (!Page.IsPostBack)
-        {
-            var todaysDate = DateTime.Today.ToString(CultureInfo.InvariantCulture).Split(null)[0];
-            datesDropDown.Text = todaysDate;
-            var allChannels = ChannelsDbService.GetChannelsFromDbByDate(todaysDate);
-            BindAllChannels(allChannels);
-
-            var allDates = ChannelsDbService.GetUniqueArticleDates().OrderByDescending(date => date);
-            datesDropDown.DataSource = allDates;
-            datesDropDown.DataBind();
-        }
+        var allDates = ChannelsDbService.GetUniqueArticleDates().OrderByDescending(date => date);
+        datesDropDown.DataSource = allDates;
+        datesDropDown.DataBind();
     }
 
     protected void SearchArticlesByDate(object sender, EventArgs e)
@@ -56,23 +44,20 @@ public partial class Dashboard : System.Web.UI.Page
      
     private void BindAllChannels(NewsCollection allChannels)
     {
-        RssService.PersistNewArticles();
+        RssChannelsService.PersistNewArticles();
         gvRss.DataSource = allChannels.Channels;
         gvRss.DataBind();
     }
 
     protected void OnArticleDataBound(object sender, RepeaterItemEventArgs e)
     {
+        var article = (Article)e.Item.DataItem;
+        var channel = article.Channel;
+        var template = RssChannelsServiceSection.GetTemplateByChannelName(channel);
+        var articleTemplateControl = (dynamic)Page.LoadControl("~/ArticleTemplates/" + template + ".ascx");
+        var placeholder = e.Item.FindControl("ArticlePlaceHolder") as PlaceHolder;
 
-        var dict = new Dictionary<string, string>();
-        dict.Add("generic", "~/ArticleTemplates/GenericArticleTemplate.ascx");
-        
-        var ucSimpleControl = (GenericArticleTemplates)Page.LoadControl(dict["generic"]);
-
-        ucSimpleControl.ArticleTemplate = (Article)e.Item.DataItem;
-        var placeholder = e.Item.FindControl("PlaceHolder1") as PlaceHolder;
-        placeholder.Controls.Add(ucSimpleControl);
+        articleTemplateControl.ArticleTemplate = (Article)e.Item.DataItem;
+        if (placeholder != null) placeholder.Controls.Add(articleTemplateControl);
     }
-
-
 }

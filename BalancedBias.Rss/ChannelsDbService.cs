@@ -12,6 +12,8 @@ namespace BalancedBias.Rss
     public class ChannelsDbService
     {
         private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["channelsDb"].ConnectionString;
+        private static readonly RssChannelsServiceSection Config = (RssChannelsServiceSection)ConfigurationManager.GetSection("rssChannelsService");
+
 
         public static void AddNewArticle(string channel, string title, string url, string publishDate, string description)
         {
@@ -34,25 +36,11 @@ namespace BalancedBias.Rss
             }
         }
 
-        public static NewsCollection GetAllChannelsFromDb()
-        {
-            var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
-            var newsCollection = new NewsCollection();
-            if (config == null) return newsCollection;
-            foreach (ChannelElement channel in config.Channels)
-            {
-                newsCollection.Channels.Add(GetArticlesByChannel(channel));
-            }
-
-            return newsCollection;
-        }
-
         public static NewsCollection GetChannelsFromDbByDate(string date)
         {
-            var config = ConfigurationManager.GetSection("rssService") as RssServiceSection;
             var newsCollection = new NewsCollection();
-            if (config == null) return newsCollection;
-            foreach (ChannelElement channel in config.Channels)
+            if (Config == null) return newsCollection;
+            foreach (ChannelElement channel in Config.Channels)
             {
                 newsCollection.Channels.Add(GetArticlesByDateAndChannel(channel, date));
             }
@@ -69,7 +57,7 @@ namespace BalancedBias.Rss
                 CommandText = "get_all_stored_dates",
                 CommandType = CommandType.StoredProcedure
             };
-            var reader = DbHelper.ExecuteReader(ConnectionString, command) as SqlDataReader;
+            var reader = (SqlDataReader)DbHelper.ExecuteReader(ConnectionString, command);
             if (reader == null) return uniqueDates;
             while (reader.Read())
             {
@@ -85,9 +73,11 @@ namespace BalancedBias.Rss
 
         public static Channel GetArticlesByDateAndChannel(ChannelElement channelElement, string publishDate)
         {
-            var channel = new Channel();
-            channel.Name = channelElement.Name;
-            channel.Icon = channelElement.Icon;
+            var channel = new Channel
+            {
+                Name = channelElement.Name,
+                Icon = channelElement.Icon
+            };
 
             var command = new SqlCommand
             {
@@ -97,7 +87,7 @@ namespace BalancedBias.Rss
 
             command.Parameters.Add(new SqlParameter("@Channel", channel.Name));
             command.Parameters.Add(new SqlParameter("@Date", publishDate));
-            var reader = DbHelper.ExecuteReader(ConnectionString, command) as SqlDataReader;
+            var reader = (SqlDataReader)DbHelper.ExecuteReader(ConnectionString, command);
             if (reader == null) return channel;
             while (reader.Read())
             {
@@ -114,40 +104,6 @@ namespace BalancedBias.Rss
                 channel.Articles.Add(article);
             }
             reader.Close();
-            return channel;
-        }
-
-        public static Channel GetArticlesByChannel(ChannelElement channelElement)
-        {
-            var channel = new Channel();
-            channel.Name = channelElement.Name;
-            channel.Icon = channelElement.Icon;
-
-            var command = new SqlCommand
-            {
-                CommandText = "get_articles_by_channel",
-                CommandType = CommandType.StoredProcedure
-            };
-
-            command.Parameters.Add(new SqlParameter("@Channel", channel.Name));
-            var reader = DbHelper.ExecuteReader(ConnectionString, command) as SqlDataReader;
-            if (reader == null) return channel;
-            while (reader.Read())
-            {
-                var article = new Article
-                {
-                    Channel = Convert.ToString(reader["channel"].ToString()),
-                    Title = Convert.ToString(reader["title"].ToString()),
-                    Body = Convert.ToString(reader["body"].ToString()),
-                    Url = string.IsNullOrEmpty(reader["url"].ToString())
-                        ? ""
-                        : reader["url"].ToString(),
-                    PublishDate = Convert.ToString(reader["publishDate"].ToString())
-                };
-                channel.Articles.Add(article);
-            }
-            reader.Close();
-            channel.Articles = channel.Articles.OrderByDescending(c => c.PublishDate).ToList();
             return channel;
         }
 

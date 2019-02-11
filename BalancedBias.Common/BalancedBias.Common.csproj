@@ -61,7 +61,7 @@
     <Compile Include="Config\ChannelElement.cs" />
     <Compile Include="Config\ChannelElementCollection.cs" />
     <Compile Include="Config\IAppConfigReader.cs" />
-    <Compile Include="Config\RssServiceSection.cs" />
+    <Compile Include="Config\RssChannelsServiceSection.cs" />
     <Compile Include="Connectivity\DbHelper.cs" />
     <Content Include="Connectivity\stored-proceedures\check_article_uniqueness.sql" />
     <Content Include="Connectivity\stored-proceedures\get_articles_by_channel.sql" />

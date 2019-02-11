@@ -44,7 +44,7 @@
     <Compile Include="ChannelsDbService.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="NewsCollection.cs" />
-    <Compile Include="RssService.cs" />
+    <Compile Include="RssChannelsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="GenericArticleTemplate.ascx.cs" Inherits="ArticleTemplates.GenericArticleTemplate" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="FoxNewsArticleTemplate.ascx.cs" Inherits="ArticleTemplates.FoxNewsArticleTemplate" %>
 
 <div class="card m-2" style="width: 400px">
     <div class="card-body">

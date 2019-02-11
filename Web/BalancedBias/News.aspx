@@ -1,10 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="News.aspx.cs" Inherits="Dashboard" %>
-<%@ Register TagPrefix="BalancedBias" TagName="BaseArticleTemplate" Src="~/ArticleTemplates/BaseArticleTemplate.ascx" %>
-<%@ Reference Control="~/ArticleTemplates/GenericArticleTemplate.ascx" %>
-
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="<%=MediaBasePath%>/css/global-styles.css" />
@@ -15,12 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<script>
-    $(document).ready(function () {
-        var pageCenter = (document.body.scrollWidth - document.body.clientWidth) / 2;
-        window.scrollBy(pageCenter, 0);
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            var pageCenter = (document.body.scrollWidth - document.body.clientWidth) / 2;
+            window.scrollBy(pageCenter, 0);
+        });
+    </script>
     <div class="channels-container">
         <form id="Form1" runat="server">
             <div class="d-flex justify-content-center">
@@ -55,17 +51,7 @@
                                 <img src="<%#Eval("Icon")%>" alt="Alternate Text" class="channel-icon" />
                                 <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>' runat="server" OnItemDataBound="OnArticleDataBound">
                                     <ItemTemplate>
-                                        <%--<BalancedBias:BaseArticleTemplate runat="server" ID="TemplateGeneric" ArticleTemplateType="Generic"/>--%>
-                                        <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
-                                        <%--<asp:PlaceHolder OnItemDataBound="OnArticleDataBound" runat="server" ID="templatePlaceholder" ></asp:PlaceHolder>--%>
-<%--                                            <div class="card m-2" style="width: 400px">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"><%#Eval("Title") %></h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted"><%#Eval("PublishDate") %></h6>
-                                                    <p class="card-text"><%#Eval("Body") %></p>
-                                                    <a href="<%#Eval("Url") %>" class="card-url">Read More</a>
-                                                </div>
-                                            </div>--%>
+                                        <asp:PlaceHolder ID="ArticlePlaceHolder" runat="server"></asp:PlaceHolder>
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
@@ -75,6 +61,5 @@
             </div>
         </form>
     </div>
-
 </body>
 </html>
