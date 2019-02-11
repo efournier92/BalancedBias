@@ -2,8 +2,15 @@
 
 namespace BalancedBias.Common.Config
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Config reader for ChannelElement section
+    /// </summary>
     public class ChannelElement : ConfigurationSection
     {
+        /// <summary>
+        /// Name config key for ChannelElement
+        /// </summary>
         [ConfigurationProperty("name", IsKey = true, IsRequired = true)]
         public string Name
         {
@@ -11,6 +18,9 @@ namespace BalancedBias.Common.Config
             set { this["name"] = value; }
         }
 
+        /// <summary>
+        /// Url config value for ChannelElement
+        /// </summary>
         [ConfigurationProperty("url")]
         public string Url
         {
@@ -18,6 +28,9 @@ namespace BalancedBias.Common.Config
             set { this["url"] = value; }
         }
 
+        /// <summary>
+        /// Icon config value for ChannelElement
+        /// </summary>
         [ConfigurationProperty("icon")]
         public string Icon
         {
@@ -25,6 +38,9 @@ namespace BalancedBias.Common.Config
             set { this["icon"] = value; }
         }
 
+        /// <summary>
+        /// Template config value for ChannelElement
+        /// </summary>
         [ConfigurationProperty("template")]
         public string Template
         {

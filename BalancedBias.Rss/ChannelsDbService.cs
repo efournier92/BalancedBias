@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using BalancedBias.Common.Config;
 using BalancedBias.Common.Connectivity;
 
@@ -13,7 +12,6 @@ namespace BalancedBias.Rss
     {
         private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["channelsDb"].ConnectionString;
         private static readonly RssChannelsServiceSection Config = (RssChannelsServiceSection)ConfigurationManager.GetSection("rssChannelsService");
-
 
         public static void AddNewArticle(string channel, string title, string url, string publishDate, string description)
         {

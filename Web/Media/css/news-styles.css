@@ -1,18 +1,13 @@
 ﻿.channels-container {
     width: 2948px;
     background-image: linear-gradient(to right, #42A5F5 , #EF5350);
-
-    /*background: black;*/ 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
 }
 
 .channel-icon {
-    /*mix-blend-mode: multiply;
-    filter: brightness(2);*/
     display: block;
     margin: 0 auto;
     height: 50px;

@@ -7,8 +7,15 @@ using BalancedBias.Common.Config;
 
 namespace BalancedBias.Rss
 {
+    /// <summary>
+    /// Rss Channels Service
+    /// </summary>
     public class RssChannelsService
     {
+        /// <summary>
+        /// Checks each RSS channel for new articles
+        /// Writes new articles to database
+        /// </summary>
         public static void PersistNewArticles()
         {
             var config = ConfigurationManager.GetSection("rssChannelsService") as RssChannelsServiceSection;
