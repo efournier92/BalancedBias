@@ -9,6 +9,7 @@ namespace BalancedBias.Common.Config
     [ConfigurationCollection(typeof(ChannelElement))]
     public class ChannelElementCollection : ConfigurationElementCollection
     {
+        /// <inheritdoc />
         /// <summary>
         /// Creates a new ChannelElement
         /// </summary>
@@ -18,6 +19,7 @@ namespace BalancedBias.Common.Config
             return new ChannelElement();
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Gets ChannelElement name from element
         /// </summary>

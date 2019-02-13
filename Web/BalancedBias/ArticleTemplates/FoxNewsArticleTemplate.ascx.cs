@@ -1,4 +1,5 @@
-﻿using BalancedBias.Rss;
+﻿using BalancedBias.Common.Config;
+using BalancedBias.Common.Rss;
 
 namespace ArticleTemplates
 {
@@ -12,5 +13,10 @@ namespace ArticleTemplates
         /// ArticleTemplate property of type Article
         /// </summary>
         public Article ArticleTemplate { get; set; }
+
+        /// <summary>
+        /// Path to template-specific stylesheet
+        /// </summary>
+        public string PathToStyles { get; set; }
     }
 }

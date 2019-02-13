@@ -1,4 +1,4 @@
-﻿namespace BalancedBias.Rss
+﻿namespace BalancedBias.Common.Rss
 {
     /// <summary>
     /// Defines Article class parameters

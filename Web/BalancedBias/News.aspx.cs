@@ -3,12 +3,16 @@ using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
 using BalancedBias.Common.Config;
+using BalancedBias.Common.Connectivity;
 using BalancedBias.Common.Constants;
 using BalancedBias.Common.Infrastructure;
-using BalancedBias.Rss;
+using BalancedBias.Common.Rss;
 
 public partial class News : System.Web.UI.Page
 {
+    private static readonly IChannelsDbService ChannelsDbService = DependencyResolverGateway.Resolve<IChannelsDbService>();
+    private static readonly IRssChannelsService RssChannelsService = DependencyResolverGateway.Resolve<IRssChannelsService>();
+
     /// <summary>
     /// MediaBasePath property of type string
     /// </summary>
@@ -81,10 +85,11 @@ public partial class News : System.Web.UI.Page
     {
         var article = (Article)e.Item.DataItem;
         var channel = article.Channel;
-        var template = RssChannelsServiceSection.GetTemplateByChannelName(channel);
-        var articleTemplateControl = (dynamic)Page.LoadControl("~/ArticleTemplates/" + template + ".ascx");
+        var templateName = RssChannelsServiceSection.GetTemplateByChannelName(channel);
+        var articleTemplateControl = (dynamic)Page.LoadControl("~/ArticleTemplates/" + templateName + ".ascx");
         var placeholder = e.Item.FindControl("ArticlePlaceHolder") as PlaceHolder;
         articleTemplateControl.ArticleTemplate = (Article)e.Item.DataItem;
+        articleTemplateControl.PathToStyles = MediaBasePath + "/ArticleTemplates/" + templateName + ".css";
         if (placeholder != null) placeholder.Controls.Add(articleTemplateControl);
     }
 }

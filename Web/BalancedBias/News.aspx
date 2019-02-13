@@ -20,7 +20,7 @@
             <div class="d-flex justify-content-center">
                 <asp:DropDownList ID="datesDropDown" runat="server" OnSelectedIndexChanged="SearchArticlesByDate" AutoPostBack="True"></asp:DropDownList>
             </div>
-            <form action="">
+            <div>
                 <div class="line-container">
                     <span class="line line-liberal arrow-left"></span>
                     <label>
@@ -30,8 +30,8 @@
                     </label>
                     <span class="line line-conservative arrow-right"></span>
                 </div>
-                <div class="d-flex justify-content-center" style="width: 100%">
-                    <div class="d-flex justify-content-between" style="width: 90vw; margin: 0 3%; margin-top: -24px;">
+                <div class="political-persuasion-container d-flex justify-content-center">
+                    <div class="liberal-conservative-labels-container d-flex justify-content-between">
                         <div class="more-label theme-liberal">
                             More Liberal
                         </div>
@@ -40,12 +40,12 @@
                         </div>
                     </div>
                 </div>
-            </form>
-            <div id="main-container" class="">
+            </div>
+            <div id="main-container">
                 <div class="d-flex flex-row">
                     <asp:Repeater ID="gvRss" runat="server">
                         <ItemTemplate>
-                            <div style="width: 400px" class="m-2">
+                            <div class="channel-column-container m-2">
                                 <img src="<%#Eval("Icon")%>" alt="Alternate Text" class="channel-icon" />
                                 <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>' runat="server" OnItemDataBound="OnArticleDataBound">
                                     <ItemTemplate>

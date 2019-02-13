@@ -1,10 +1,7 @@
 ﻿.channels-container {
     width: 2948px;
+    height: 100vh;
     background-image: linear-gradient(to right, #42A5F5 , #EF5350);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 .channel-icon {
@@ -18,12 +15,30 @@
     font-weight: bold;
 }
 
+.liberal-conservative-labels-container {
+    width: 90vw;
+    margin: 0 3%;
+    margin-top: -24px;
+}
+
+.political-persuasion-container {
+    width: 100%;
+}
+
+.channel-column-container {
+    width: 400px;
+}
+
 .theme-liberal {
     color: #304FFE;
 }
 
 .theme-conservative {
     color: #C62828;
+}
+
+.article-card {
+    width: 400px;
 }
 
 .more-label {

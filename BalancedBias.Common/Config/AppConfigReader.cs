@@ -2,6 +2,7 @@
 
 namespace BalancedBias.Common.Config
 {
+    /// <inheritdoc />
     /// <summary>
     /// Returns appSettingValue based on app configuration section
     /// </summary>

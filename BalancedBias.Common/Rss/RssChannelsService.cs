@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Linq;
 using System.Configuration;
 using System.Globalization;
+using System.Linq;
 using System.Xml.Linq;
 using BalancedBias.Common.Config;
+using BalancedBias.Common.Connectivity;
+using BalancedBias.Common.Infrastructure;
 
-namespace BalancedBias.Rss
+namespace BalancedBias.Common.Rss
 {
     /// <summary>
     /// Rss Channels Service
     /// </summary>
     public class RssChannelsService : IRssChannelsService
     {
+        private static readonly IChannelsDbService ChannelsDbService = DependencyResolverGateway.Resolve<IChannelsDbService>();
+
         /// <summary>
         /// Checks each RSS channel for new articles
         /// Writes new articles to database
         /// </summary>
-        public static void PersistNewArticles()
+        public void PersistNewArticles()
         {
             var config = ConfigurationManager.GetSection("rssChannelsService") as RssChannelsServiceSection;
             var allChannels = new NewsCollection();

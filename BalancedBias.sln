@@ -5,7 +5,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BalancedBias", "http://loca
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		ProjectReferences = "{d8d59a38-85bc-4cbb-8923-6debd32c9a49}|BalancedBias.Common.dll;{ED0E3C52-52BB-416E-9F0A-666C965DFA05}|BalancedBias.Rss.dll;"
+		ProjectReferences = "{d8d59a38-85bc-4cbb-8923-6debd32c9a49}|BalancedBias.Common.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_58853"
 		Debug.AspNetCompiler.PhysicalPath = "Web\BalancedBias\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58853\"
@@ -58,8 +58,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedBias.Common", "BalancedBias.Common\BalancedBias.Common.csproj", "{D8D59A38-85BC-4CBB-8923-6DEBD32C9A49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedBias.Rss", "BalancedBias.Rss\BalancedBias.Rss.csproj", "{ED0E3C52-52BB-416E-9F0A-666C965DFA05}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,10 +76,6 @@ Global
 		{D8D59A38-85BC-4CBB-8923-6DEBD32C9A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8D59A38-85BC-4CBB-8923-6DEBD32C9A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8D59A38-85BC-4CBB-8923-6DEBD32C9A49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED0E3C52-52BB-416E-9F0A-666C965DFA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED0E3C52-52BB-416E-9F0A-666C965DFA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED0E3C52-52BB-416E-9F0A-666C965DFA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED0E3C52-52BB-416E-9F0A-666C965DFA05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

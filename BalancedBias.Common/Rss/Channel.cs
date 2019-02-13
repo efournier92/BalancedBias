@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BalancedBias.Rss
+namespace BalancedBias.Common.Rss
 {
     /// <summary>
     /// Defines Channel class parameters

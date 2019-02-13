@@ -4,9 +4,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using BalancedBias.Common.Config;
-using BalancedBias.Common.Connectivity;
+using BalancedBias.Common.Rss;
 
-namespace BalancedBias.Rss
+namespace BalancedBias.Common.Connectivity
 {
     /// <summary>
     /// Service to handle reading and writing data to Channels database table
@@ -99,7 +99,6 @@ namespace BalancedBias.Rss
         /// <param name="publishDate"></param>
         /// <returns>Channel containing all articles from inputted date</returns>
         public Channel GetArticlesByDateAndChannel(ChannelElement channelElement, string publishDate)
-        public Channel GetArticlesByDateAndChannel(ChannelElement channelElement, string publishDate)
         {
             var channel = new Channel
             {
@@ -140,7 +139,7 @@ namespace BalancedBias.Rss
         /// </summary>
         /// <param name="title"></param>
         /// <returns>Bool reflecting if inputted article is unique in database</returns>
-        public static bool IsArticleUnique(string title)
+        public bool IsArticleUnique(string title)
         {
             var command = new SqlCommand
             {
@@ -156,6 +155,11 @@ namespace BalancedBias.Rss
             var id = (int)returnParameter.Value;
             reader.Close();
             return id == 0;
+        }
+
+        NewsCollection IChannelsDbService.GetChannelsFromDbByDate(string date)
+        {
+            return GetChannelsFromDbByDate(date);
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿.second-nexus.card {
+    background: transparent;
+    border-color: #BC0581;
+    border-width: 1px;
+}
+
+.second-nexus.card-title {
+    color: #2C5782;
+}
+
+.second-nexus.card-subtitle {
+    color: #BC0581;
+}
+
+.second-nexus.card-url {
+    color: #BC0581;
+}

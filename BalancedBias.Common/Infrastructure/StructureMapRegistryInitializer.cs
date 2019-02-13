@@ -1,4 +1,6 @@
 ﻿using BalancedBias.Common.Config;
+using BalancedBias.Common.Connectivity;
+using BalancedBias.Common.Rss;
 using StructureMap.Configuration.DSL;
 
 namespace BalancedBias.Common.Infrastructure
@@ -14,8 +16,9 @@ namespace BalancedBias.Common.Infrastructure
         /// </summary>
         public StructureMapRegistryInitializer()
         {
-            const string databaseConnectionString = "";
-            For<IAppConfigReader>().Use<AppConfigReader>().Ctor<string>("connectionString").Is(databaseConnectionString);
+            For<IAppConfigReader>().Use<AppConfigReader>();
+            For<IChannelsDbService>().Use<ChannelsDbService>();
+            For<IRssChannelsService>().Use<RssChannelsService>();
         }
     }
 }

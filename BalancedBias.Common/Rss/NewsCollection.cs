@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BalancedBias.Rss
+namespace BalancedBias.Common.Rss
 {
     /// <summary>
     /// Collection of RSS channels with article details

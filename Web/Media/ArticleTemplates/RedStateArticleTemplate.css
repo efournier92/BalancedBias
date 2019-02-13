@@ -1,0 +1,11 @@
+﻿.red-state.card {
+    background: #B81F25;
+}
+
+.red-state.card-title {
+    color: black;
+}
+
+.red-state.card-body {
+    color: white;
+}

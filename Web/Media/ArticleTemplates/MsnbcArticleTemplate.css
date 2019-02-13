@@ -1,0 +1,21 @@
+﻿.msnbc.card {
+    background: #5E478F;
+    border-color: white;
+    border-width: 2px;
+}
+
+.msnbc.card-subtitle {
+    color: #01AB4B;
+}
+
+.msnbc.card-text {
+    color: #F5C000;
+}
+
+.msnbc.card-title {
+    color: #F37021;
+}
+
+.msnbc.card-url {
+    color: #01AB4B;
+}

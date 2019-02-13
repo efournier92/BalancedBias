@@ -43,6 +43,8 @@
     <Compile Include="Channel.cs" />
     <Compile Include="ChannelsDbService.cs" />
     <Compile Include="Article.cs" />
+    <Compile Include="IChannelsDbService.cs" />
+    <Compile Include="IRssChannelsService.cs" />
     <Compile Include="NewsCollection.cs" />
     <Compile Include="RssChannelsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
