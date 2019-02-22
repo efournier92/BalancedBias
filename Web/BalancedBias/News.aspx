@@ -3,18 +3,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>BalanedBias News</title>
     <link rel="stylesheet" type="text/css" href="<%= MediaBasePath %>/css/news-styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </head>
-<body>
-    <script>
-        $(document).ready(function () {
-            var pageCenter = (document.body.scrollWidth - document.body.clientWidth) / 2;
-            window.scrollBy(pageCenter, 0);
-        });
-    </script>
+<body id="body-element">
+
     <div class="channels-container">
         <form runat="server">
             <div class="d-flex justify-content-center">
@@ -59,5 +55,11 @@
             </div>
         </form>
     </div>
+    <script>
+        $(document).ready(function () {
+            var pageCenter = (document.body.scrollWidth - document.body.clientWidth) / 2;
+            document.getElementsByTagName('html')[0].scrollLeft = pageCenter;
+        });
+    </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using BalancedBias.Common.Config;
 using BalancedBias.Common.Connectivity;
@@ -20,11 +21,11 @@ namespace BalancedBias.Common.Rss
         /// Checks each RSS channel for new articles
         /// Writes new articles to database
         /// </summary>
-        public void PersistNewArticles()
+        public async Task<bool> PersistNewArticles()
         {
             var config = ConfigurationManager.GetSection("rssChannelsService") as RssChannelsServiceSection;
             var allChannels = new NewsCollection();
-            if (config == null) return;
+            if (config == null) return false;
             foreach (ChannelElement channel in config.Channels)
             {
                 var currentChannel = new Channel
@@ -65,6 +66,8 @@ namespace BalancedBias.Common.Rss
                     }
                 }
             }
+
+            return true;
         }
     }
 }

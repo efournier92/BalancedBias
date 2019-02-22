@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using BalancedBias.Common.Config;
 using BalancedBias.Common.Connectivity;
@@ -45,12 +48,17 @@ public partial class News : System.Web.UI.Page
         if (Page.IsPostBack) return;
         var todaysDate = DateTime.Today.ToString(CultureInfo.InvariantCulture).Split(null)[0];
         datesDropDown.Text = todaysDate;
+        RssChannelsService.PersistNewArticles();
+        //Thread.Sleep(1000);
         var allChannels = ChannelsDbService.GetChannelsFromDbByDate(todaysDate);
         BindAllChannels(allChannels);
 
         var allDates = ChannelsDbService.GetUniqueArticleDates().OrderByDescending(date => date);
         datesDropDown.DataSource = allDates;
         datesDropDown.DataBind();
+        //Response.Redirect(Request.RawUrl);
+
+        //ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "DoPostBack", "__doPostBack(sender, e)", true);
     }
 
     /// <summary>
@@ -71,7 +79,8 @@ public partial class News : System.Web.UI.Page
     /// <param name="allChannels"></param>
     private void BindAllChannels(NewsCollection allChannels)
     {
-        RssChannelsService.PersistNewArticles();
+
+        //task.Wait();
         gvRss.DataSource = allChannels.Channels;
         gvRss.DataBind();
     }
