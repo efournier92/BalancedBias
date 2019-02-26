@@ -1,6 +1,6 @@
 # ![BalancedBias](https://github.com/efournier92/balancedbias/blob/master/Web/Media/img/BalancedBias_Logo_Dark.png?raw=true)
 
-## Table of Contents
+## Contents
 - [Overview](#overview)
 - [Demo](#demo)
 - [Features](#features)
