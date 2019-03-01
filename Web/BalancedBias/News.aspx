@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </head>
-<body id="body-element">
-
+<body>
     <div class="channels-container">
         <form runat="server">
             <div class="d-flex justify-content-center">
@@ -37,13 +36,13 @@
                     </div>
                 </div>
             </div>
-            <div id="main-container">
+            <div>
                 <div class="d-flex flex-row">
-                    <asp:Repeater ID="gvRss" runat="server">
+                    <asp:Repeater ID="rssChannelsRepeater" runat="server">
                         <ItemTemplate>
                             <div class="channel-column-container m-2">
                                 <img src="<%#Eval("Icon")%>" alt="Alternate Text" class="channel-icon" />
-                                <asp:Repeater ID="Repeater1" DataSource='<%#Eval("Articles")%>' runat="server" OnItemDataBound="OnArticleDataBound">
+                                <asp:Repeater DataSource='<%#Eval("Articles")%>' runat="server" OnItemDataBound="OnArticleDataBound">
                                     <ItemTemplate>
                                         <asp:PlaceHolder ID="ArticlePlaceHolder" runat="server"></asp:PlaceHolder>
                                     </ItemTemplate>

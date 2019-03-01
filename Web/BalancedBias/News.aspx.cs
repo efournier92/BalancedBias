@@ -81,8 +81,8 @@ public partial class News : System.Web.UI.Page
     {
 
         //task.Wait();
-        gvRss.DataSource = allChannels.Channels;
-        gvRss.DataBind();
+        rssChannelsRepeater.DataSource = allChannels.Channels;
+        rssChannelsRepeater.DataBind();
     }
 
     /// <summary>
