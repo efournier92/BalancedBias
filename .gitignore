@@ -1,6 +1,8 @@
 # Compiled Assets
-**/Bin/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
 
-# User Options
+# User Option Files
 *.suo
 
