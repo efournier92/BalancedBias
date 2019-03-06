@@ -1,0 +1,6 @@
+# Compiled Assets
+Bin/
+
+# User Options
+*.suo
+

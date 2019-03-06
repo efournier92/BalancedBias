@@ -16,7 +16,7 @@
 In these politically-polarizing times, a having balanced diet of news to ingest is more important than ever. Since most news outlets also provide an RSS feed, this app leverages those as its data source. Seven media channels are displayed by default, ranked them from most liberal to most conservative, laid out from left to right. The result provides insight into how different outlets are covering the same story, at the same time. All articles are persisted to a T-SQL database, such that historical data will be persisted, and further insight can be gained by tracking a news story by keyword over time. This app aims to help balance the media consumption of users everywhere.
 
 ## Demo
-[]()
+[BalancedBias](http://balancedbias.gearhostpreview.com/)
 
 ## Features
 
