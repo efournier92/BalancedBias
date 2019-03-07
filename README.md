@@ -1,4 +1,4 @@
-# ![BalancedBias](https://raw.githubusercontent.com/efournier92/balancedbias/master/Web/Media/img/logo/BalancedBias_Logo_Dark.png)
+# ![BalancedBias](https://raw.githubusercontent.com/efournier92/balancedbias/master/Web/Media/img/ScreenShots/BalancedBias_NewsDashboard.png)
 
 ## Contents
 - [Overview](#overview)
