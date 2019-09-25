@@ -64,11 +64,13 @@
     <Compile Include="Connectivity\RssChannelsServiceSection.cs" />
     <Compile Include="Connectivity\ChannelsDbService.cs" />
     <Compile Include="Connectivity\DbHelper.cs" />
+    <Compile Include="Sample\ISampleClass.cs" />
     <Compile Include="Rss\Article.cs" />
     <Compile Include="Rss\Channel.cs" />
     <Compile Include="Rss\IRssChannelsService.cs" />
     <Compile Include="Rss\NewsCollection.cs" />
     <Compile Include="Rss\RssChannelsService.cs" />
+    <Compile Include="Sample\SampleClass.cs" />
     <Content Include="Connectivity\StoredProcedures\check_article_uniqueness.sql" />
     <Content Include="Connectivity\StoredProcedures\get_articles_by_channel.sql" />
     <Content Include="Connectivity\StoredProcedures\get_articles_by_date_and_channel.sql" />
@@ -89,6 +91,7 @@
     <Content Include="Connectivity\StoredProcedures\add_new_article.sql" />
     <Content Include="Connectivity\StoredProcedures\create_channel_table.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

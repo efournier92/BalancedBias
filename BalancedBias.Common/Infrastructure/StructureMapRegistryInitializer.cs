@@ -1,6 +1,7 @@
 ﻿using BalancedBias.Common.Config;
 using BalancedBias.Common.Connectivity;
 using BalancedBias.Common.Rss;
+using BalancedBias.Common.Sample;
 using StructureMap.Configuration.DSL;
 
 namespace BalancedBias.Common.Infrastructure
@@ -19,6 +20,7 @@ namespace BalancedBias.Common.Infrastructure
             For<IAppConfigReader>().Use<AppConfigReader>();
             For<IChannelsDbService>().Use<ChannelsDbService>();
             For<IRssChannelsService>().Use<RssChannelsService>();
+            For<ISampleClass>().Use<SampleClass>();
         }
     }
 }

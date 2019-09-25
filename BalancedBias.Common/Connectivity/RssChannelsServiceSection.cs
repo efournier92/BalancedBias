@@ -22,7 +22,7 @@ namespace BalancedBias.Common.Config
         /// </summary>
         /// <param name="channelName"></param>
         /// <returns>Template name as string</returns>
-        public static string GetTemplateByChannelName(string channelName)
+        public string GetTemplateByChannelName(string channelName)
         {
             var section = (RssChannelsServiceSection)ConfigurationManager.GetSection("rssChannelsService");
             if (section == null) return "Generic";

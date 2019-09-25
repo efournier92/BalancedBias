@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -91,7 +92,8 @@ public partial class News : System.Web.UI.Page
     {
         var article = (Article)e.Item.DataItem;
         var channel = article.Channel;
-        var templateName = RssChannelsServiceSection.GetTemplateByChannelName(channel);
+        var section = (RssChannelsServiceSection)ConfigurationManager.GetSection("rssChannelsService");
+        var templateName = section.GetTemplateByChannelName(channel);
         var articleTemplateControl = (dynamic)Page.LoadControl("~/ArticleTemplates/" + templateName + ".ascx");
         var placeholder = e.Item.FindControl("ArticlePlaceHolder") as PlaceHolder;
         articleTemplateControl.ArticleTemplate = (Article)e.Item.DataItem;
